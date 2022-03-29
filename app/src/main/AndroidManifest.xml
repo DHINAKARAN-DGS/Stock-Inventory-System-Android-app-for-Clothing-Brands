@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Praganyas_collection">
         <activity
+            android:name=".AddDetails"
+            android:exported="false" />
+        <activity
+            android:name=".OrdersActivity"
+            android:exported="false" />
+        <activity
             android:name=".CategoryActivity"
             android:exported="false" />
         <activity

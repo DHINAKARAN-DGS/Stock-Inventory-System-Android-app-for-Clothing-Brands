@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.add_product);
 
         System.out.println("aaa");
-        String url = "https://pragnyacollections.000webhostapp.com/addProducts.php";
+        String url = "https://pragnyacollections.000webhostapp.com/addSellers.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -43,20 +43,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> map = new HashMap<>();
-                map.put("product_title", "title");
-                map.put("product_price", "500");
-                map.put("category", "kurti");
-                map.put("product_image", "image");
-                map.put("size_s", "15");
-                map.put("size_l", "12");
-                map.put("size_m", "11");
-                map.put("size_xl", "13");
-                map.put("size_xxl", "14");
-                map.put("size_xxxl", "15");
-                map.put("size_4xl", "16");
-                map.put("size_5xl", "17");
-                map.put("size_fs", "18");
-                map.put("pid", "58");
+                map.put("name", "title");
+                map.put("ph_no", "500");
+                map.put("address", "kurti");
                 return map;
             }
         };
