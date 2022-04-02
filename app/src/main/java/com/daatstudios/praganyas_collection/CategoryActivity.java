@@ -1,27 +1,47 @@
 package com.daatstudios.praganyas_collection;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CategoryActivity extends AppCompatActivity {
 
-    TextView c1,c2,c3,c4,c5,c6,c7,c8;
+    RecyclerView recyclerView;
+
+    List<DisplayModel> displayModelList = new ArrayList<>();
+    DisplayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        c1=findViewById(R.id.textView);
-        c2=findViewById(R.id.textView2);
-        c3=findViewById(R.id.textView4);
-        c4=findViewById(R.id.textView5);
-        c5=findViewById(R.id.textView6);
-        c6=findViewById(R.id.textView7);
-        c7=findViewById(R.id.textView8);
-        c8=findViewById(R.id.textView9);
+        recyclerView = findViewById(R.id.ViewRV);
+
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+
+        adapter  = new DisplayAdapter(displayModelList);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
 
 
 
