@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView addProducs,inve;
+    ImageView addProducs,inve,bill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         addProducs = findViewById(R.id.product);
         inve = findViewById(R.id.inventory);
+        bill = findViewById(R.id.bill);
 
         addProducs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent  = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        }); bill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(MainActivity.this, OrdersActivity.class);
                 startActivity(intent);
             }
         });
