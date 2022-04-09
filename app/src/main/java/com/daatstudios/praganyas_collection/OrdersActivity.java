@@ -3,8 +3,10 @@ package com.daatstudios.praganyas_collection;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,6 +30,8 @@ import java.util.Map;
 public class OrdersActivity extends AppCompatActivity {
 
     List<String> names = new ArrayList<>();
+    List<String> prices = new ArrayList<>();
+    Button addPBTn;
 
     AutoCompleteTextView autoCompleteTextView;
 
@@ -37,8 +41,6 @@ public class OrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_orders);
 
         readStatus();
-
-        autoCompleteTextView = findViewById(R.id.searchET);
 
 
     }
@@ -57,13 +59,6 @@ public class OrdersActivity extends AppCompatActivity {
                                 JSONObject object = array.getJSONObject(x);
                                 System.out.println(object.getString("product_title"));
                             }
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                                    (OrdersActivity.this,android.R.layout.select_dialog_item, names);
-
-                            autoCompleteTextView.setThreshold(2);
-                            autoCompleteTextView.setAdapter(adapter);
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
