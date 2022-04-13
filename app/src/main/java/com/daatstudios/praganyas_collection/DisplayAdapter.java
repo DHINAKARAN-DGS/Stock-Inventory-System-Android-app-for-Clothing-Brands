@@ -3,6 +3,7 @@ package com.daatstudios.praganyas_collection;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,12 +47,14 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.VIEWHOLD
     public class VIEWHOLDER extends RecyclerView.ViewHolder {
         TextView name,pprice,psize;
         ImageView pic;
+        Button add;
         public VIEWHOLDER(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.textView3);
             pprice=itemView.findViewById(R.id.textView11);
             pic=itemView.findViewById(R.id.imageView);
             psize=itemView.findViewById(R.id.size4xl2);
+            add =  itemView.findViewById(R.id.button);
         }
 
         public void setData(String title, String image, String price, String size) {
@@ -59,6 +62,14 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.VIEWHOLD
             pprice.setText(price);
             Glide.with(itemView.getContext()).load(image).into(pic);
             psize.setText(size);
+
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    
+                }
+            });
+
         }
     }
 }

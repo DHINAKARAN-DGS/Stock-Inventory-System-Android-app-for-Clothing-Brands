@@ -73,7 +73,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         stringRequest.setRetryPolicy(policy);
 
-        RequestQueue queue = Volley.newRequestQueue(OrdersActivity.this);
+        RequestQueue queue = Volley.newRequestQueue(CategoryActivity.this);
         queue.add(stringRequest);
 
 
