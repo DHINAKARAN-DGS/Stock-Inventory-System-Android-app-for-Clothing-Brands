@@ -134,9 +134,21 @@
         android:gravity="center"
         android:hint="FS"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/o_5xl_size"
         app:layout_constraintStart_toEndOf="@+id/o_xl_size"
         app:layout_constraintTop_toTopOf="@+id/o_xl_size" />
+
+    <EditText
+        android:id="@+id/o_p_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Price"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/o_fs_size"
+        app:layout_constraintTop_toTopOf="@+id/o_5xl_size" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
