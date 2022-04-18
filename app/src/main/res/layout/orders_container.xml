@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:numberpicker="http://schemas.android.com/apk/res-auto"
+    >
+
+    <TextView
+        android:id="@+id/name_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TITANIC GOLD FULL COLLAR"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/price_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Price $350"
+        app:layout_constraintStart_toStartOf="@+id/name_o"
+        app:layout_constraintTop_toBottomOf="@+id/name_o" />
+
+    <EditText
+        android:id="@+id/o_s_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="S"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/price_o"
+        app:layout_constraintTop_toBottomOf="@+id/price_o" />
+
+    <EditText
+        android:id="@+id/o_m_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="M"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/o_s_size"
+        app:layout_constraintStart_toEndOf="@+id/o_s_size" />
+
+    <EditText
+        android:id="@+id/o_l_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="L"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/o_m_size"
+        app:layout_constraintStart_toEndOf="@+id/o_m_size" />
+
+    <EditText
+        android:id="@+id/o_xl_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="XL"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/o_l_size"
+        app:layout_constraintStart_toEndOf="@+id/o_l_size" />
+
+    <EditText
+        android:id="@+id/o_xxl_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="XXL"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/o_s_size"
+        app:layout_constraintTop_toBottomOf="@+id/o_s_size" />
+
+    <EditText
+        android:id="@+id/o_xxxl_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="XXXL"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/o_xxl_size"
+        app:layout_constraintTop_toTopOf="@+id/o_xxl_size" />
+
+    <EditText
+        android:id="@+id/o_4xl_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="4XL"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/o_xxxl_size"
+        app:layout_constraintTop_toTopOf="@+id/o_xxxl_size" />
+
+    <EditText
+        android:id="@+id/o_5xl_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="5XL"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/o_4xl_size"
+        app:layout_constraintTop_toTopOf="@+id/o_4xl_size" />
+
+    <EditText
+        android:id="@+id/o_fs_size"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="FS"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/o_5xl_size"
+        app:layout_constraintStart_toEndOf="@+id/o_xl_size"
+        app:layout_constraintTop_toTopOf="@+id/o_xl_size" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

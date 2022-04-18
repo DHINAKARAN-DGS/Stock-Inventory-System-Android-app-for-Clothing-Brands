@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,7 +67,8 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.VIEWHOLD
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    
+                    OrdersActivity.ordersModelList.add(new OrdersModel("kurti","150","0","0","0","0","0","0","0","0","0"));
+                    Toast.makeText(itemView.getContext(), "Added!", Toast.LENGTH_SHORT).show();
                 }
             });
 

@@ -1,12 +1,18 @@
 package com.daatstudios.praganyas_collection;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,60 +37,42 @@ public class OrdersActivity extends AppCompatActivity {
 
     List<String> names = new ArrayList<>();
     List<String> prices = new ArrayList<>();
+    public static List<OrdersModel> ordersModelList = new ArrayList<>();
     Button addPBTn;
 
     AutoCompleteTextView autoCompleteTextView;
+    EditText et;
+
+    RecyclerView recyclerView;
+    OrdersAdapter adapter;
+    Button contBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
 
-        readStatus();
+        recyclerView = findViewById(R.id.orders_rv);
+        contBtn = findViewById(R.id.continueBtn);
 
+        adapter = new OrdersAdapter(ordersModelList);
+        adapter.notifyDataSetChanged();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        contBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(OrdersActivity.this,ConfirmationActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    private void readStatus() {
-
-        String url = "https://pragnyacollections.000webhostapp.com/getdata.php";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray array = new JSONArray(response);
-                            for (int x = 0; x < array.length(); x++) {
-                                JSONObject object = array.getJSONObject(x);
-                                System.out.println(object.getString("product_title"));
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("error: " + error.toString());
-            }
-
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                return super.getParams();
-            }
-        };
-
-        int socketTimeOut = 50000;
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-
-        stringRequest.setRetryPolicy(policy);
-
-        RequestQueue queue = Volley.newRequestQueue(OrdersActivity.this);
-        queue.add(stringRequest);
-
-
-    }
 
 }
