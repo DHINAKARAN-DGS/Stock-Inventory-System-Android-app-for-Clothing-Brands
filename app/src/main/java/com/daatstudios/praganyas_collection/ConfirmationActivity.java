@@ -20,15 +20,12 @@ public class ConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
-        confirmationModelList.add(new ConfirmationModel("bsaijfb",""));
-        confirmationModelList.add(new ConfirmationModel("ajkbsfja",""));
-        confirmationModelList.add(new ConfirmationModel("jabjsf",""));
-        confirmationModelList.add(new ConfirmationModel("bajksbf",""));
-        confirmationModelList.add(new ConfirmationModel("akjsbkja",""));
+
+
 
         adapter =new ConfirmationAdapter(confirmationModelList);
         adapter.notifyDataSetChanged();
-//
+
         recyclerView = findViewById(R.id.confirmation_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);

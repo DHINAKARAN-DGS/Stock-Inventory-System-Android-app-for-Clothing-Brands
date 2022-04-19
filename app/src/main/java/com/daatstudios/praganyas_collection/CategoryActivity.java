@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -34,7 +37,11 @@ public class CategoryActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
 
     List<DisplayModel> displayModelList = new ArrayList<>();
+    List<DisplayModel> sortedlist = new ArrayList<>();
     DisplayAdapter adapter;
+
+    Spinner spinner;
+    String arr[]={"Categories","chudi","cate","churidhar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +50,17 @@ public class CategoryActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.ViewRV);
         floatingActionButton = findViewById(R.id.floatingActionButton);
+        spinner = findViewById(R.id.spinner);
+
+
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,arr);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(aa);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CategoryActivity.this,OrdersActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, OrdersActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,10 +72,28 @@ public class CategoryActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            displayModelList.clear();
+                            sortedlist.clear();
                             JSONArray array = new JSONArray(response);
                             for (int x = 0; x < array.length(); x++) {
                                 JSONObject object = array.getJSONObject(x);
-                                System.out.println(object.getString("product_title"));
+                                String sizes = "S " + object.getString("S") +
+                                        " | L " + object.getString("L") +
+                                        " | M " + object.getString("M") +
+                                        " | L " + object.getString("L") +
+                                        " | XL " + object.getString("XL") +
+                                        " | XXL " + object.getString("XXL") +
+                                        " | XXXL " + object.getString("XXXL") +
+                                        " | 4XL " + object.getString("IVXL") +
+                                        " | 5XL " + object.getString("VXL") +
+                                        " | FS " + object.getString("FS");
+
+                                displayModelList.add(new DisplayModel(object.getString("product_title")
+                                        , object.getString("product_price")
+                                        , object.getString("product_image")
+                                        , sizes
+                                        , object.getString("category")
+                                        , object.getString("product_id")));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -89,19 +120,30 @@ public class CategoryActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(CategoryActivity.this);
         queue.add(stringRequest);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sortedlist.clear();
+                for (int a=0;a<displayModelList.size();a++){
+                    if (arr[i].equals(displayModelList.get(a).getCat())){
+                        sortedlist.add(new DisplayModel(displayModelList.get(a).getTitle(),displayModelList.get(a).getPrice(),displayModelList.get(a).getImage(),displayModelList.get(a).getSize(),displayModelList.get(a).getCat(),displayModelList.get(a).getId()));
+                    }
+                }
+                if (sortedlist.size()>0){
+                    adapter = new DisplayAdapter(sortedlist);
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
+            }
 
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
-        displayModelList.add(new DisplayModel("Kurti","550","","4 5 8 6 7 2 9 21 8 26 48 2 28"));
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        adapter  = new DisplayAdapter(displayModelList);
+            }
+        });
+
+
+        adapter = new DisplayAdapter(displayModelList);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -109,5 +151,6 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
     }
+
 
 }

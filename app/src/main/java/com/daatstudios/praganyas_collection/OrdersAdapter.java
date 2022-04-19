@@ -41,7 +41,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
         String xl4 = ordersModelList.get(position).getXl4();
         String xl5 = ordersModelList.get(position).getXl5();
         String fs = ordersModelList.get(position).getFs();
-        holder.setData(name,price,s,m,l,xl,xxl,xxxl,xl4,xl5,fs);
+        String sizes = ordersModelList.get(position).getAvailable();
+        holder.setData(name,price,s,m,l,xl,xxl,xxxl,xl4,xl5,fs,sizes);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
             title=itemView.findViewById(R.id.name_o);
             pricetv=itemView.findViewById(R.id.price_o);
 
+
             set.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,9 +91,9 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
 
         }
 
-        public void setData(String name, String price, String s, String m, String l, String xl, String xxl, String xxxl, String xl4, String xl5, String fs) {
+        public void setData(String name, String price, String s, String m, String l, String xl, String xxl, String xxxl, String xl4, String xl5, String fs,String avai) {
             title.setText(name);
-            pricetv.setText(price);
+            pricetv.setText(avai);
 
         }
     }

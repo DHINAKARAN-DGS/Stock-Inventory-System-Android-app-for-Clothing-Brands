@@ -35,14 +35,8 @@ import java.util.Map;
 
 public class OrdersActivity extends AppCompatActivity {
 
-    List<String> names = new ArrayList<>();
-    List<String> prices = new ArrayList<>();
     public static List<OrdersModel> ordersModelList = new ArrayList<>();
-    Button addPBTn;
-
-    AutoCompleteTextView autoCompleteTextView;
-    EditText et;
-
+    public static List<ConfirmationModel> confirmationModelList = new ArrayList<>();
     RecyclerView recyclerView;
     OrdersAdapter adapter;
     Button contBtn;
@@ -67,6 +61,10 @@ public class OrdersActivity extends AppCompatActivity {
         contBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int a=0;a< ordersModelList.size();a++){
+                    confirmationModelList.add(new ConfirmationModel(ordersModelList.get(a).getPrice(),ordersModelList.get(a).getPrice()));
+                    Toast.makeText(OrdersActivity.this, confirmationModelList.get(a).getMain(), Toast.LENGTH_SHORT).show();
+                }
                 Intent intent  = new Intent(OrdersActivity.this,ConfirmationActivity.class);
                 startActivity(intent);
             }

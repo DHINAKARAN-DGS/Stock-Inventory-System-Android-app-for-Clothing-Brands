@@ -1,8 +1,16 @@
 package com.daatstudios.praganyas_collection;
 
 public class DisplayModel {
-    String title,price,image,size;
+    String title,price,image,size,cat,id;
 
+    public DisplayModel(String title, String price, String image, String size, String cat, String id) {
+        this.title = title;
+        this.price = price;
+        this.image = image;
+        this.size = size;
+        this.cat = cat;
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -36,10 +44,19 @@ public class DisplayModel {
         this.size = size;
     }
 
-    public DisplayModel(String title, String price, String image, String size) {
-        this.title = title;
-        this.price = price;
-        this.image = image;
-        this.size = size;
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
