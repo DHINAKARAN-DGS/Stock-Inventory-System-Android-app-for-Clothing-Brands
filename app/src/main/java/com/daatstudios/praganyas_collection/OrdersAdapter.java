@@ -24,25 +24,15 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
     @NonNull
     @Override
     public VIEWHOLDER onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_container,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_container, parent, false);
         return new VIEWHOLDER(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VIEWHOLDER holder, int position) {
         String name = ordersModelList.get(position).getTitle();
-        String price = ordersModelList.get(position).getPrice();
-        String s = ordersModelList.get(position).getS();
-        String m = ordersModelList.get(position).getM();
-        String l = ordersModelList.get(position).getL();
-        String xl = ordersModelList.get(position).getXl();
-        String xxl = ordersModelList.get(position).getXxl();
-        String xxxl = ordersModelList.get(position).getXxxl();
-        String xl4 = ordersModelList.get(position).getXl4();
-        String xl5 = ordersModelList.get(position).getXl5();
-        String fs = ordersModelList.get(position).getFs();
         String sizes = ordersModelList.get(position).getAvailable();
-        holder.setData(name,price,s,m,l,xl,xxl,xxxl,xl4,xl5,fs,sizes);
+        holder.setData(name, sizes, position);
     }
 
     @Override
@@ -52,8 +42,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
 
     public class VIEWHOLDER extends RecyclerView.ViewHolder {
 
-        EditText set,met,let,xlet,xxlet,xxxlet,xl4et,xl5et,fset;
-        TextView title,pricetv;
+        EditText set, met, let, xlet, xxlet, xxxlet, xl4et, xl5et, fset,priceet;
+        TextView title, pricetv;
 
         public VIEWHOLDER(@NonNull View itemView) {
             super(itemView);
@@ -67,10 +57,17 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
             xl4et = itemView.findViewById(R.id.o_4xl_size);
             xl5et = itemView.findViewById(R.id.o_5xl_size);
             fset = itemView.findViewById(R.id.o_fs_size);
+            priceet = itemView.findViewById(R.id.o_p_price);
 
-            title=itemView.findViewById(R.id.name_o);
-            pricetv=itemView.findViewById(R.id.price_o);
+            title = itemView.findViewById(R.id.name_o);
+            pricetv = itemView.findViewById(R.id.price_o);
 
+
+        }
+
+        public void setData(String name, String avai, int pos) {
+            title.setText(name);
+            pricetv.setText(avai);
 
             set.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -80,7 +77,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
 
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    Toast.makeText(itemView.getContext(), set.getText().toString(), Toast.LENGTH_SHORT).show();
+                    OrdersActivity.ordersModelList.get(pos).setS(set.getText().toString().trim());
                 }
 
                 @Override
@@ -89,12 +86,158 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.VIEWHOLDER
                 }
             });
 
-        }
+            met.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        public void setData(String name, String price, String s, String m, String l, String xl, String xxl, String xxxl, String xl4, String xl5, String fs,String avai) {
-            title.setText(name);
-            pricetv.setText(avai);
+                }
 
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setM(met.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            let.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setL(let.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            xlet.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setXl(xlet.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            xxlet.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setXxl(xxlet.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            xxxlet.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setXxxl(xxxlet.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            xl4et.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setXl4(xl4et.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            xl5et.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setXl5(xl5et.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            fset.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setFs(fset.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+
+            priceet.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    OrdersActivity.ordersModelList.get(pos).setPrice(priceet.getText().toString().trim());
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
         }
     }
 }

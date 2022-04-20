@@ -36,7 +36,6 @@ import java.util.Map;
 public class OrdersActivity extends AppCompatActivity {
 
     public static List<OrdersModel> ordersModelList = new ArrayList<>();
-    public static List<ConfirmationModel> confirmationModelList = new ArrayList<>();
     RecyclerView recyclerView;
     OrdersAdapter adapter;
     Button contBtn;
@@ -61,11 +60,10 @@ public class OrdersActivity extends AppCompatActivity {
         contBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int a=0;a< ordersModelList.size();a++){
-                    confirmationModelList.add(new ConfirmationModel(ordersModelList.get(a).getPrice(),ordersModelList.get(a).getPrice()));
-                    Toast.makeText(OrdersActivity.this, confirmationModelList.get(a).getMain(), Toast.LENGTH_SHORT).show();
+                for (int a = 0; a < ordersModelList.size(); a++) {
+
                 }
-                Intent intent  = new Intent(OrdersActivity.this,ConfirmationActivity.class);
+                Intent intent = new Intent(OrdersActivity.this, ConfirmationActivity.class);
                 startActivity(intent);
             }
         });

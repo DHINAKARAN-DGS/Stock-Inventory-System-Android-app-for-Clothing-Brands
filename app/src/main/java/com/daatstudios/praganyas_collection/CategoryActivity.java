@@ -41,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
     DisplayAdapter adapter;
 
     Spinner spinner;
-    String arr[]={"Categories","chudi","cate","churidhar"};
+    String arr[] = {"Categories", "chudi", "cate", "churidhar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class CategoryActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
 
 
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,arr);
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arr);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(aa);
 
@@ -124,12 +124,12 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 sortedlist.clear();
-                for (int a=0;a<displayModelList.size();a++){
-                    if (arr[i].equals(displayModelList.get(a).getCat())){
-                        sortedlist.add(new DisplayModel(displayModelList.get(a).getTitle(),displayModelList.get(a).getPrice(),displayModelList.get(a).getImage(),displayModelList.get(a).getSize(),displayModelList.get(a).getCat(),displayModelList.get(a).getId()));
+                for (int a = 0; a < displayModelList.size(); a++) {
+                    if (arr[i].equals(displayModelList.get(a).getCat())) {
+                        sortedlist.add(new DisplayModel(displayModelList.get(a).getTitle(), displayModelList.get(a).getPrice(), displayModelList.get(a).getImage(), displayModelList.get(a).getSize(), displayModelList.get(a).getCat(), displayModelList.get(a).getId()));
                     }
                 }
-                if (sortedlist.size()>0){
+                if (sortedlist.size() > 0) {
                     adapter = new DisplayAdapter(sortedlist);
                     adapter.notifyDataSetChanged();
                     recyclerView.setAdapter(adapter);
