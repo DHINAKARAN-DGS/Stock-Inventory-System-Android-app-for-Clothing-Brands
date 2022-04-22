@@ -67,7 +67,6 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.VIEWHOLD
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     OrdersActivity.ordersModelList.add(new OrdersModel(title,"0","0","0","0","0","0","0","0","0","0",size));
                     Toast.makeText(itemView.getContext(), "Added!", Toast.LENGTH_SHORT).show();
                 }

@@ -74,6 +74,7 @@ public class CategoryActivity extends AppCompatActivity {
                         try {
                             displayModelList.clear();
                             sortedlist.clear();
+                            OrdersActivity.original_list.clear();
                             JSONArray array = new JSONArray(response);
                             for (int x = 0; x < array.length(); x++) {
                                 JSONObject object = array.getJSONObject(x);
@@ -87,6 +88,19 @@ public class CategoryActivity extends AppCompatActivity {
                                         " | 4XL " + object.getString("IVXL") +
                                         " | 5XL " + object.getString("VXL") +
                                         " | FS " + object.getString("FS");
+
+                                OrdersActivity.ordersModelList.add(new OrdersModel(
+                                        object.getString("product_title")
+                                        , object.getString("product_price")
+                                        , object.getString("S")
+                                        , object.getString("L")
+                                        , object.getString("M")
+                                        , object.getString("XL")
+                                        , object.getString("XXL")
+                                        , object.getString("XXXL")
+                                        , object.getString("IVXL")
+                                        , object.getString("VXL")
+                                        , object.getString("FS"),sizes,object.getString("product_id")));
 
                                 displayModelList.add(new DisplayModel(object.getString("product_title")
                                         , object.getString("product_price")

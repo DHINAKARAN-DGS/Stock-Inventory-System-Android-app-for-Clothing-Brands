@@ -1,9 +1,9 @@
 package com.daatstudios.praganyas_collection;
 
 public class OrdersModel {
-    String title,price,s,l,m,xl,xxl,xxxl,xl4,xl5,fs,available;
+    String title,price,s,l,m,xl,xxl,xxxl,xl4,xl5,fs,available,id;
 
-    public OrdersModel(String title, String price, String s, String l, String m, String xl, String xxl, String xxxl, String xl4, String xl5, String fs, String available) {
+    public OrdersModel(String title, String price, String s, String l, String m, String xl, String xxl, String xxxl, String xl4, String xl5, String fs, String available, String id) {
         this.title = title;
         this.price = price;
         this.s = s;
@@ -16,6 +16,7 @@ public class OrdersModel {
         this.xl5 = xl5;
         this.fs = fs;
         this.available = available;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -112,5 +113,13 @@ public class OrdersModel {
 
     public void setAvailable(String available) {
         this.available = available;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

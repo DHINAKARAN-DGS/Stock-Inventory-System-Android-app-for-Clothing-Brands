@@ -36,6 +36,7 @@ import java.util.Map;
 public class OrdersActivity extends AppCompatActivity {
 
     public static List<OrdersModel> ordersModelList = new ArrayList<>();
+    public static List<OrdersModel> original_list = new ArrayList<>();
     RecyclerView recyclerView;
     OrdersAdapter adapter;
     Button contBtn;
@@ -61,7 +62,9 @@ public class OrdersActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 for (int a = 0; a < ordersModelList.size(); a++) {
+                    if (ordersModelList.get(a).getId().equals(original_list.get(a).getId())){
 
+                    }
                 }
                 Intent intent = new Intent(OrdersActivity.this, ConfirmationActivity.class);
                 startActivity(intent);
