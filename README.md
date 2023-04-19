@@ -2,4 +2,4 @@
 
 *Done with Android and PHP MYSQL as backend*
 
-~ Still need to add complete features
+~ Still need to complete features listing feature
